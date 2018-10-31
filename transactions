@@ -1,0 +1,23 @@
+CREATE TABLE transactions (
+ i          NUMBER(10)    NOT NULL,
+  tr  VARCHAR2(50)  NOT NULL);
+
+ALTER TABLE transactions ADD (
+  CONSTRAINT dept_pk PRIMARY KEY (ID));
+
+CREATE SEQUENCE tran_seq START WITH 1;
+desc departments
+
+select * from transactions
+
+insert into transactions values(56,'Hi')
+
+CREATE OR REPLACE TRIGGER trans_bir 
+BEFORE INSERT ON transactions 
+FOR EACH ROW
+
+BEGIN
+  SELECT tran_seq.NEXTVAL
+  INTO   :new.i
+  FROM   dual;
+END;

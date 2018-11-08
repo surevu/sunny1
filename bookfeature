@@ -1,0 +1,104 @@
+
+Feature: Entering deatils on Hotel Booking Page
+  
+  Background: User Login is validated and redirected to this page
+
+
+  Scenario: Verify the title as Hotel Booking
+    Given user is on hotel booking page
+    When title of the page is "Hotel Booking"
+    Then Title is verified
+    
+    
+ Scenario: Successful hotel booking with all valid data
+    Given user is on hotel booking page
+    When user enters all the valid data
+    Then navigate to scucess page
+    
+Scenario: Failure in hotel booking on leaving first Name blank
+    Given user is on hotel booking page
+    When user leaves first name blank and clicks the button
+    Then dispaly alert message
+    
+    
+Scenario: Failure in hotel booking on leaving Last name blank
+    Given user is on hotel booking page
+    When user enters first name and leaves last name blank
+    Then dispaly alert message
+    
+     
+Scenario: Failure in hotel booking on entering incorrect email format
+    Given user is on hotel booking pageSSSSSSSSS
+    When user enter incorrect email format
+    Then dispaly alert message 
+    
+Scenario: Failure in hotel booking on leaving mobile number blank
+    Given user is on hotel booking page
+    When user leaves mobile number blank and clicks the button
+    Then dispaly alert message
+    
+Scenario: Display message for invalid contact number format
+  Given user is on hotel booking page
+  When User enters incorrect mobilenumber format and clicks the button
+   |98745631|
+  |9874563201|
+  |1236547890|  
+  ||
+  |98745632112|
+  Then display alert message
+ 
+  
+    
+Scenario: Failure in hotel booking on not selecting number of people staying at the hotel
+    Given user is on hotel booking page
+    When user doesnot selecting any number of people staying at the hotel
+    Then dispaly alert message   
+    
+Scenario Outline: Validate the number of rooms alloted
+Given User is on hotel booking page
+When user enters <numberOfGuests>
+Then alocate rooms such that 1 room for minimum 3 guests
+Examples:
+|numberOfGuests|
+|2|
+|6|
+|9|
+    
+    
+Scenario: Failure in hotel booking on enetring invalid address format
+    Given user is on hotel booking page
+    When user enters address in invalid format
+    Then dispaly alert message
+    
+     
+Scenario: Failure in hotel booking on not selecting any city
+    Given user is on hotel booking page
+    When user does not select any city and clicks the button
+    Then dispaly alert message      
+
+Scenario: Failure in hotel booking on not selecting any State
+    Given user is on hotel booking page
+    When user does not select State and clicks the button
+    Then dispaly alert message     
+    
+Scenario: Failure in hotel booking on leaving Card Holder name blank
+    Given user is on hotel booking page
+    When user leaves Card Holder name blank and clicks the button
+    Then dispaly alert message
+    
+Scenario: Failure in hotel booking on leaving debit card number blank
+    Given user is on hotel booking page
+    When user leaves debit card number blank and clicks the button
+    Then dispaly alert message    
+
+Scenario: Failure in hotel booking on leaving card expiration month blank
+    Given user is on hotel booking page
+    When user leaves card expiration month blank and clicks the button
+    Then dispaly alert message   
+    
+Scenario: Failure in hotel booking on leaving card expiration year blank
+    Given user is on hotel booking page
+    When user leaves card expiration year blank and clicks the button
+    Then dispaly alert message       
+    
+    

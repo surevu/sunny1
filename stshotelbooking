@@ -1,0 +1,258 @@
+package hotelbooking;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class SeleniumHBooking {
+
+	public static void main(String args[]) throws InterruptedException {
+
+		WebDriver driver = new FirefoxDriver();
+		driver.get("file:///D:/share/hotelBooking/hotelbooking.html/");
+
+		System.out.println(driver.getCurrentUrl());
+
+		if (driver.getTitle().contentEquals("Hotel Booking"))
+			System.out.println("Heading Matched");
+		else
+			System.out.println("Heading Not Matched");
+
+		// blank firstname
+		Thread.sleep(1000);
+		driver.findElement(By.name("txtFN")).sendKeys("");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(3000);
+		String alertMsg = driver.switchTo().alert().getText();
+		System.out.println(alertMsg);
+		driver.switchTo().alert().accept();
+
+		// Valid firstname
+		Thread.sleep(200);
+		driver.findElement(By.name("txtFN")).sendKeys("Sunny");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		System.out.println("Valid Name");
+		driver.switchTo().alert().accept();
+
+		// blank lastname
+		Thread.sleep(1000);
+		driver.findElement(By.name("txtLN")).sendKeys("");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(3000);
+		String alertMsg1 = driver.switchTo().alert().getText();
+		System.out.println(alertMsg1);
+		driver.switchTo().alert().accept();
+		;
+
+		// valid lastname
+		Thread.sleep(10);
+		driver.findElement(By.name("txtLN")).sendKeys("Revu");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		System.out.println("Valid last Name");
+		driver.switchTo().alert().accept();
+
+		// blank email
+		Thread.sleep(1000);
+		driver.findElement(By.id("txtEmail")).sendKeys("");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(1000);
+		alertMsg1 = driver.switchTo().alert().getText();
+		System.out.println(alertMsg1);
+		driver.switchTo().alert().accept();
+
+		// invalid email
+		Thread.sleep(10);
+		driver.findElement(By.id("txtEmail")).sendKeys("sunny");
+		Thread.sleep(1000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(1000);
+		alertMsg1 = driver.switchTo().alert().getText();
+		System.out.println(alertMsg1);
+		driver.switchTo().alert().accept();
+
+		// valid mail
+		Thread.sleep(10);
+		driver.findElement(By.id("txtEmail")).clear();
+		driver.findElement(By.id("txtEmail")).sendKeys("sunny@gmail.com");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(1000);
+		System.out.println("Valid Email Id");
+		driver.switchTo().alert().accept();
+
+		// blankMobileNo
+		Thread.sleep(10);
+		driver.findElement(By.cssSelector("input[pattern='[789][0-9]{9}']")).sendKeys("");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(1000);
+		alertMsg1 = driver.switchTo().alert().getText();
+		System.out.println(alertMsg1);
+		driver.switchTo().alert().accept();
+
+		// InvalidMobileno
+		Thread.sleep(1000);
+		driver.findElement(By.cssSelector("input[pattern='[789][0-9]{9}']")).sendKeys("012365478");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(1000);
+		alertMsg1 = driver.switchTo().alert().getText();
+		System.out.println(alertMsg1);
+		driver.switchTo().alert().accept();
+
+		// validmobile
+		Thread.sleep(1000);
+		driver.findElement(By.cssSelector("input[pattern='[789][0-9]{9}']")).clear();
+		driver.findElement(By.cssSelector("input[pattern='[789][0-9]{9}']")).sendKeys("9632014587");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(10);
+		System.out.println("Valid Mobile No.");
+		driver.switchTo().alert().accept();
+
+		// blankcity
+		Thread.sleep(10);
+		Select city = new Select(driver.findElement(By.name("city")));
+		city.selectByVisibleText("Select City");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(1000);
+		alertMsg1 = driver.switchTo().alert().getText();
+		System.out.println(alertMsg1);
+		driver.switchTo().alert().accept();
+
+		// validcity
+		Thread.sleep(10);
+		Select city1 = new Select(driver.findElement(By.name("city")));
+		city1.selectByVisibleText("Pune");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(1000);
+		System.out.println("Valid City");
+		driver.switchTo().alert().accept();
+
+		// blankstate
+		Thread.sleep(10);
+		Select State = new Select(driver.findElement(By.name("state")));
+		State.selectByVisibleText("Select State");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(1000);
+		alertMsg1 = driver.switchTo().alert().getText();
+		System.out.println(alertMsg1);
+		driver.switchTo().alert().accept();
+
+		// validstate
+		Thread.sleep(10);
+		Select state1 = new Select(driver.findElement(By.name("state")));
+		state1.selectByVisibleText("Telangana");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(1000);
+		System.out.println("Valid State");
+		driver.switchTo().alert().accept();
+
+		// blank CardholderName
+		Thread.sleep(1000);
+		driver.findElement(By.id("txtCardholderName")).sendKeys("");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(3000);
+		alertMsg = driver.switchTo().alert().getText();
+		System.out.println(alertMsg);
+		driver.switchTo().alert().accept();
+
+		// Valid cardholdername
+		Thread.sleep(200);
+		driver.findElement(By.id("txtCardholderName")).sendKeys("Sunny R");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		System.out.println("Valid Card Holder Name");
+		driver.switchTo().alert().accept();
+
+		// blank debitcardnumber
+		Thread.sleep(1000);
+		driver.findElement(By.name("debit")).sendKeys("");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(3000);
+		alertMsg = driver.switchTo().alert().getText();
+		System.out.println(alertMsg);
+		driver.switchTo().alert().accept();
+
+		// Valid cardholdername
+		Thread.sleep(200);
+		driver.findElement(By.name("debit")).sendKeys("5004 2003 5555");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		System.out.println("Valid Debit Card number");
+		driver.switchTo().alert().accept();
+
+		// blank cvv
+		Thread.sleep(1000);
+		driver.findElement(By.name("cvv")).sendKeys("");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(3000);
+		alertMsg = driver.switchTo().alert().getText();
+		System.out.println(alertMsg);
+		driver.switchTo().alert().accept();
+
+		// Valid cvv
+		Thread.sleep(200);
+		driver.findElement(By.name("cvv")).sendKeys("786");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		System.out.println("Valid CVV");
+		driver.switchTo().alert().accept();
+
+
+		// blank month
+		Thread.sleep(1000);
+		driver.findElement(By.name("month")).sendKeys("");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(3000);
+		alertMsg = driver.switchTo().alert().getText();
+		System.out.println(alertMsg);
+		driver.switchTo().alert().accept();
+
+		// Valid month
+		Thread.sleep(200);
+		driver.findElement(By.name("month")).sendKeys("JUL");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		System.out.println("Valid Month");
+		driver.switchTo().alert().accept();
+
+		// blank Year
+		Thread.sleep(1000);
+		driver.findElement(By.id("txtCardholderName")).sendKeys("");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		Thread.sleep(3000);
+		alertMsg = driver.switchTo().alert().getText();
+		System.out.println(alertMsg);
+		driver.switchTo().alert().accept();
+
+		// Valid Year
+		Thread.sleep(200);
+		driver.findElement(By.name("year")).sendKeys("2025");
+		Thread.sleep(3000);
+		driver.findElement(By.className("btn")).click();
+		System.out.println("Valid all Credentials");
+		driver.navigate().to("file:///D:/share/hotelBooking/success.html");
+		Thread.sleep(5000);
+		System.out.println(driver.getCurrentUrl());
+		System.out.println("Booking Confirmed.....");
+		driver.close();
+		driver.quit();
+	
+	}
+}
